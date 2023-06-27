@@ -1,0 +1,245 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>menu</title>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+    integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+    crossorigin="anonymous"
+  ></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="./css/menu.css" />
+  <link rel="stylesheet" href="./css/menuQuery.css" />
+</head>
+
+<body>
+  <div class="page">
+    <div class="container">
+      <div class="div1">
+        <div class="wrap">
+          <div class="photo"><img src="<%- user.pImage %>" alt="" /></div>
+          <div class="name"><%- user.name %></div>
+          <div class="common" id="option1">
+            <i class="fas fa-user-circle"></i><a href="/profile">Profile</a>
+          </div>
+          <div class="common" id="option2">
+            <i class="fas fa-hamburger"></i> <a href="/menu">Menu</a>
+          </div>
+          <div class="common" id="option3">
+            <i class="fas fa-bars"></i> <a href="/faq"> What we offer?</a>
+          </div>
+          <div class="common" id="option4">
+            <i class="fas fa-sign-out-alt"></i> <a href="/logout">Logout</a>
+          </div>
+        </div>
+      </div>
+      <div class="div2">
+        <div class="first">
+          <div class="heading">Welcome to Food Gully &#128523;</div>
+          <div class="cart"><i class="fas fa-shopping-cart"></i></div>
+        </div>
+        <div class="second">
+          <div class="search">
+            <div class="dish1 dish" data-filter="all">
+              <img src="/images/menu/dish.png" alt="" />All
+            </div>
+            <div class="dish2 dish" data-filter="burger">
+              <img src="/images/menu/hamburger.png" alt="" />Burger
+            </div>
+            <div class="dish3 dish" data-filter="pizza">
+              <img src="/images/menu/pizza.png" alt="" />Pizza
+            </div>
+            <div class="dish4 dish" data-filter="Indian">
+              <img src="/images/menu/salad.png" alt="" />Indian
+            </div>
+            <div class="dish5 dish" data-filter="desert">
+              <img src="/images/menu/cupcake.png" alt="" />Deserts
+            </div>
+            <div class="dish6 dish" data-filter="Italian">
+              <img src="/images/menu/thai-noodles.png" alt="" />Italian
+            </div>
+            <div class="dish7 dish" data-filter="tea">
+              <img src="/images/menu/tea.png" alt="" />Tea
+            </div>
+            <div class="dish8 dish" data-filter="drinks">
+              <img src="/images/menu/beer.png" alt="" />Drinks
+            </div>
+          </div>
+        </div>
+
+        <div class="third"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+            console.log("hello");
+            <!-- let dishes = document.querySelectorAll(".item"); -->
+            const dishes = [
+            {
+                category : "burger",
+                name : "Burger",
+                Details : "Lorem ipsum dolor sit amet",
+                Amount : "100",
+                Image : "/images/menu/bur.png",
+                id : "1"
+            },
+
+            {
+                category : "pizza",
+                name : "Pizza",
+                Details : "Lorem ipsum dolor sit amet",
+                Amount
+                : "200",
+                Image : "/images/menu/pizza.png",
+                id : "2"
+            },
+
+
+            {
+                category : "Indian",
+                name : "Indian",
+                Details : "Lorem ipsum dolor sit amet",
+                Amount
+                : "300",
+                Image : "/images/menu/salad.png",
+                id : "3"
+            },
+
+            {
+
+                category : "desert",
+                name : "Desert",
+                Details : "Lorem ipsum dolor sit amet",
+                Amount
+                : "400",
+                Image : "/images/menu/cupcake.png",
+                id : "4"
+            },
+
+            {
+                category : "Italian",
+                name : "Italian",
+                Details : "Lorem ipsum dolor sit amet",
+                Amount
+                : "500",
+                Image : "/images/menu/thai-noodles.png",
+                id : "5"
+
+            },
+
+            {
+                category : "tea",
+                name : "Tea",
+                Details : "Lorem ipsum dolor sit amet",
+                Amount
+                : "600",
+                Image : "/images/menu/tea.png",
+
+                id : "6"
+            },
+
+            {
+                category : "drinks",
+                name : "Drinks",
+                Details : "Lorem ipsum dolor sit amet",
+                Amount
+                : "700",
+                Image : "/images/menu/beer.png",
+                id : "7"
+            },
+
+
+            ]
+    let cartbtn = document.querySelector(".cart");
+    let all = document.querySelector(".dish1");
+    let burger = document.querySelector(".dish2");
+    let pizza = document.querySelector(".dish13");
+    let salad = document.querySelector(".dish4");
+    let cupcake = document.querySelector(".dish5");
+    let desert = document.querySelector(".dish6");
+    let tea = document.querySelector(".dish7");
+    let drink = document.querySelector(".dish8");
+    let item = document.querySelectorAll(".item");
+    let order = [
+
+    ];
+    const addTocart =  (item)=>{
+        console.log("added to cart",item);
+        order.push(item);
+        console.log(order);
+
+      }
+    window.addEventListener("load", function () {
+        console.log("loaded ", dishes);
+        let third = document.querySelector(".third");
+      for (let i = 0; i < dishes.length; i++) {
+
+        let newHtml = `
+
+            <div class="item  ${dishes[i].category} ">
+                <div class="img">
+                    <img src=${dishes[i].Image} alt="dishImg">
+                </div>
+                <div class="itemName">
+                    ${dishes[i].name}
+                </div>
+                <div class="itemDetail">
+                    ${dishes[i].Details}
+                </div>
+                <div class="itemAmt">
+                    <div class="amt">
+                        ${dishes[i].Amount}
+                    </div>
+                    <div class="added" onclick="addTocart({
+                        category : '${dishes[i].category}',
+                        name : '${dishes[i].name}',
+                        Details : '${dishes[i].Details}',
+                        Amount : '${dishes[i].Amount}',
+                        Image : '${dishes[i].Image}',
+                        id : '${dishes[i].id}'
+                    })" dishId=${dishes[i].id} >+</div>
+                </div>
+            </div> `
+
+        third.innerHTML += newHtml;
+
+
+      }
+
+
+      cartbtn.addEventListener("click", async function () {
+        let details = await axios.post("http://localhost:3000/order/cart/add", {
+          cart: order,
+        });
+        window.location.href = "/cart";
+      });
+
+      $(document).ready(function () {
+        $(".dish").click(function () {
+          const value = $(this).attr("data-filter");
+          if (value == "all") {
+            console.log("all");
+            $(".item").show("1000");
+          } else {
+            $(".item")
+              .not("." + value)
+              .hide("1000");
+            $(".item")
+              .filter("." + value)
+              .show("1000");
+          }
+        });
+      });
+    });
+  </script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+    crossorigin="anonymous"
+  ></script>
+</body>

@@ -1,0 +1,42 @@
+ let checkbtn = dishes[i].querySelector(".added");
+    checkbtn.addEventListener("click", async function () {
+        console.log("clicked");
+      if (checkbtn.innerHTML == "✓") {
+        let name = dishes[i].querySelector(".itemName").innerHTML;
+        let amt = dishes[i].querySelector(".amt").innerHTML;
+        order = order.filter((x) => {
+          return x.name != name && x.amt != amt;
+        });
+        checkbtn.innerHTML = "+";
+      } else {
+        order.push({
+          name: dishes[i].querySelector(".itemName").innerHTML,
+          img: dishes[i].querySelector(".img img").getAttribute("src"),
+          amt: dishes[i].querySelector(".amt").innerHTML,
+        });
+        checkbtn.innerHTML = "✓";
+      }
+    });
+
+
+
+
+
+
+    <!-- <div class="item <%- dishes[i].category %>">
+                            <div class="img">
+                                <img src=<%- dishes[i].Image %> alt="dishImg">
+                            </div>
+                            <div class="itemName">
+                                <%- dishes[i].name %>
+                            </div>
+                            <div class="itemDetail">
+                                <%- dishes[i].Details %>
+                            </div>
+                            <div class="itemAmt">
+                                <div class="amt">
+                                    <%- dishes[i].Amount %>
+                                </div>
+                                <div class="added" dishId=<%- dishes[i]._id %>>+</div>
+                            </div>
+                        </div> -->
